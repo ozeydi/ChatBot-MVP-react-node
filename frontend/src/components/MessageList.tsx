@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import type { Message } from '@shared/types';
 import MessageItem from './MessageItem';
+import { TypingIndicator } from './TypingIndicator';
 
 interface Props {
     messages: Message[];
@@ -31,6 +32,7 @@ const MessageList = ({ messages, isLoading }: Props) => {
             aria-relevant="additions"
         >
             {messages.map((m) => <MessageItem key={m.id} message={m} />)}
+            {isLoading && <TypingIndicator />}
             {/* Invisible anchor for scrolling */}
             <div ref={scrollRef} aria-hidden="true" className="h-px w-full" />
         </main>
