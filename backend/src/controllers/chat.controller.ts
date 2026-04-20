@@ -1,26 +1,35 @@
-import type { Request, Response } from "express";
+import type { Request, Response, NextFunction } from "express";
+import { z } from "zod";
+
 import type { ChatRequest, ChatResponse } from "@shared/types";
 import { getBotResponse } from "../services/chat.services";
 
-export const handleChatMessage = (
+const ChatSchema = z.object({
+  message: z
+    .string({ required_error: "Message is required" })
+    .min(1, "Message is required")
+    .max(500, "Message is too long (max 500 chars)"),
+});
+
+export const handleChatMessage = async (
   req: Request<
     Record<string, never>,
     ChatResponse | { error: string },
     ChatRequest
   >,
   res: Response<ChatResponse | { error: string }>,
+  next: NextFunction,
 ) => {
-  const { message } = req.body;
+  try {
+    const { message } = ChatSchema.parse(req.body);
 
-  // Manual validation for initial commit
-  if (!message || typeof message !== "string") {
-    return res.status(400).json({ error: "Message is required" });
-  }
+    const reply = getBotResponse(message);
 
-  const reply = getBotResponse(message);
+    // Simulating small delay for UX
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
-  // Simulating small delay for UX using standard setTimeout
-  setTimeout(() => {
     res.json({ reply, timestamp: Date.now() });
-  }, 500);
+  } catch (error) {
+    next(error);
+  }
 };
