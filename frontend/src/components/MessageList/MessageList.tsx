@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import type { Message } from '@shared/types';
-import MessageItem from './MessageItem';
-import { TypingIndicator } from './TypingIndicator';
+import MessageItem from '../MessageItem/MessageItem';
+import { TypingIndicator } from '../TypingIndicator';
 
 interface Props {
     messages: Message[];

@@ -10,7 +10,9 @@
     "dev": "concurrently \"npm run dev -w backend\" \"npm run dev -w frontend\"",
     "build": "npm run build -ws --if-present",
     "dev:backend": "npm run dev -w backend",
+    "test": "npm run test:frontend && npm run test:backend",
     "test:backend": "npm run test --prefix backend",
+    "test:frontend": "npm run test --prefix frontend",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
