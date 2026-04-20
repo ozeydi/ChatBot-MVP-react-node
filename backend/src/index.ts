@@ -18,3 +18,5 @@ app.use(errorHandler);
 app.listen(PORT, () => {
   console.log(`[server]: Backend is running at http://localhost:${PORT}`);
 });
+
+export default app;
