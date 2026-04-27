@@ -4,7 +4,8 @@
   "description": "",
   "workspaces": [
     "backend",
-    "frontend"
+    "frontend",
+    "e2e"
   ],
   "scripts": {
     "dev": "concurrently \"npm run dev -w backend\" \"npm run dev -w frontend\"",
@@ -12,7 +13,10 @@
     "dev:backend": "npm run dev -w backend",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run test:frontend && npm run test:backend",
+    "test:backend": "npm run test --prefix backend",
+    "test:frontend": "npm run test --prefix frontend",
+    "test:e2e": "npm run test -w e2e"
   },
   "repository": {
     "type": "git",
@@ -32,6 +36,8 @@
     "eslint": "^9.18.0",
     "globals": "^15.14.0",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.20.0"
+    "typescript-eslint": "^8.20.0",
+    "vitest": "^4.1.4",
+    "jsdom": "^25.0.1"
   }
 }

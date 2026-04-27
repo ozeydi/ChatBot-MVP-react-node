@@ -36,3 +36,7 @@ Thumbs.db
 # Tool specific
 .eslintcache
 vite.config.ts.timestamp-*
+
+# Playwright
+playwright-report/
+test-results/

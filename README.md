@@ -26,6 +26,9 @@ A production-ready full-stack monorepo featuring a TypeScript Express backend an
 | **Zod** | 3.24+ | Runtime Validation | Parse & validate untrusted input; type inference from schemas |
 | **tsx** | 4.19+ | TypeScript Executor | Native ESM support; instant execution without build step |
 | **Cors** | 2.8.5 | Cross-Origin Control | Secure API; flexible origin policies |
+**Vitest** | 2.1+ | Unit Testing | Vite-native; Jest-compatible; faster than Jest |
+| **Supertest** | Latest | HTTP Testing | Elegant assertions for API endpoints |
+
 
 **Architecture**: RESTful API with keyword-based chat service; modular controller-service-repository pattern.
 
@@ -36,6 +39,8 @@ A production-ready full-stack monorepo featuring a TypeScript Express backend an
 | **Vite** | 8.x | Build Tool | Lightning-fast dev server; native ESM; minimal config |
 | **Tailwind CSS** | 3.4 | Styling | Utility-first; no CSS bloat; responsive by default |
 | **TypeScript** | 6.0 | Type Safety | Full compatibility with React 19; strict mode enabled |
+| **Testing Library** | Latest | Component Testing | Accessibility-first approach; encourages best practices |
+
 
 **Architecture**: Component-driven SPA with hooks-based state management; alias paths for shared types.
 
@@ -44,6 +49,9 @@ A production-ready full-stack monorepo featuring a TypeScript Express backend an
 |-----------|---------|---------|-----------|
 | **ESLint** | 9.x | Linting | Flat config; strict rule set; TypeScript support |
 | **Concurrently** | 9.2+ | Process Management | Run backend + frontend simultaneously during dev |
+| **Playwright** | Latest | E2E Testing | Cross-browser support; excellent DX; reliable waits |
+| **Vitest Workspace** | 2.1+ | Monorepo Testing | Single test runner for all packages; shared config |
+
 
 ### Shared Packages
 - **@shared/types**: TypeScript interfaces & types (used by backend & frontend)
@@ -65,8 +73,8 @@ npm --version   # Should output v10.x or higher
 
 1. **Clone the repository**:
    ```bash
-   git clone https://gitlab.com/Ozeydi/fs-store.git
-   cd fs-store
+   git clone https://gitlab.com/fr_kata_sf/c4-sf-2026-04-16-mini-chat-osam.git
+   cd c4-sf-2026-04-16-mini-chat-osam
    ```
 
 2. **Install dependencies for all workspaces**:
@@ -167,6 +175,24 @@ Response:
 - **Root Scripts**: Run scripts from root to execute in all/specific workspaces
 - **ESM Modules**: All packages use `"type": "module"` for native ESM
 
+### Testing
+
+#### Unit & Integration Tests
+```bash
+# Run all tests
+npm test
+
+# Run specific workspace tests
+npm test -w backend
+npm test -w frontend
+npm test -w e2e
+```
+
+#### End-to-End Tests
+```bash
+npm run test:e2e
+
+```
 
 ## 🐛 Troubleshooting
 
