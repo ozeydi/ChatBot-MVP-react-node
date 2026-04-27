@@ -1,0 +1,37 @@
+{
+  "name": "c4-sf-2026-04-16-mini-chat-osam",
+  "version": "1.0.0",
+  "description": "",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "build": "npm run build -ws --if-present",
+    "dev:backend": "npm run dev -w backend",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/fr_kata_sf/c4-sf-2026-04-16-mini-chat-osam.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://gitlab.com/fr_kata_sf/c4-sf-2026-04-16-mini-chat-osam/issues"
+  },
+  "homepage": "https://gitlab.com/fr_kata_sf/c4-sf-2026-04-16-mini-chat-osam#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.18.0",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.18.0",
+    "globals": "^15.14.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.20.0"
+  }
+}
